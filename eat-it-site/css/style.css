@@ -1,0 +1,353 @@
+/* ============================================================
+   EAT IT — Feuille de style commune à toutes les pages
+   Couleurs de marque : doré #A67C37 sur noir / blanc
+   ============================================================ */
+:root {
+    --eatit-gold: #A67C37;
+    --eatit-gold-dark: #8C6527;
+}
+.bg-gold { background-color: var(--eatit-gold); }
+.text-gold { color: var(--eatit-gold); }
+.border-gold { border-color: var(--eatit-gold); }
+
+/* ---------- Navigation mobile ---------- */
+#mobile-menu {
+    display: none;
+}
+#mobile-menu.open {
+    display: block;
+}
+
+/* Lien actif dans la navigation */
+.nav-link.active {
+    color: var(--eatit-gold);
+}
+
+/* ---------- Fenêtres pop-up des catégories ---------- */
+.menu-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+.menu-modal.active { display: flex; }
+.menu-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+.menu-modal-panel {
+    position: relative;
+    background: #fff;
+    border-radius: 28px;
+    width: 100%;
+    max-width: 780px;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+.menu-modal-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.75rem;
+    background: var(--eatit-gold);
+    z-index: 2;
+}
+.menu-modal-header h3 {
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+}
+.menu-modal-header button {
+    color: #fff;
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.2s ease;
+}
+.menu-modal-header button:hover { background: rgba(255, 255, 255, 0.3); }
+body.modal-open { overflow: hidden; }
+
+/* ---------- Contrôles panier sur chaque plat ---------- */
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+.cart-controls-variant {
+    justify-content: space-between;
+    border-top: none;
+    margin-top: 6px;
+    padding-top: 0;
+}
+.cart-variant-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-right: auto;
+}
+.cart-btn-minus {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #444;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+.cart-btn-minus:hover { background: #e5e7eb; }
+.cart-qty {
+    min-width: 18px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+.cart-btn-plus {
+    background: var(--eatit-gold);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 7px 14px;
+    border-radius: 999px;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+.cart-controls-variant .cart-btn-plus {
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+}
+.cart-btn-plus:hover { opacity: 0.85; }
+
+/* ---------- Bouton panier flottant ---------- */
+#cart-fab {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 90;
+    width: 62px;
+    height: 62px;
+    border-radius: 999px;
+    background: var(--eatit-gold);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: transform 0.25s ease;
+}
+#cart-fab:hover { transform: scale(1.06); }
+#cart-fab-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #111;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid #fff;
+}
+#cart-fab-count.hidden { display: none; }
+
+/* ---------- Tiroir panier ---------- */
+#cart-drawer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+}
+#cart-drawer.active { display: block; }
+#cart-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+#cart-drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+}
+#cart-drawer.active #cart-drawer-panel { transform: translateX(0); }
+#cart-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: var(--eatit-gold);
+}
+#cart-drawer-header h3 {
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+}
+#cart-drawer-header button {
+    color: #fff;
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+}
+#cart-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.5rem;
+}
+.cart-drawer-empty {
+    text-align: center;
+    color: #9ca3af;
+    padding: 3rem 1rem;
+    font-size: 0.9rem;
+}
+.cart-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cart-line-info { flex: 1; }
+.cart-line-name {
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.cart-line-price {
+    color: var(--eatit-gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 2px;
+}
+.cart-line-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cart-line-remove {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    margin-left: 6px;
+    cursor: pointer;
+}
+.cart-line-remove:hover { color: #ef4444; }
+#cart-drawer-footer {
+    padding: 1.25rem 1.5rem 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+#cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+}
+#cart-total-row span:first-child {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #6b7280;
+    letter-spacing: 0.03em;
+}
+#cart-total-amount {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #111;
+}
+#cart-order-btn {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 15px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+}
+#cart-order-btn:hover { opacity: 0.9; }
+#cart-order-btn:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
+
+/* ---------- Tuiles de catégories du menu ---------- */
+.cat-tile {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+.cat-tile:hover { transform: translateY(-4px); }
+.cat-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+.cat-tile:hover img { transform: scale(1.08); }
+.cat-tile-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.75) 100%);
+}
+
+/* Respect de la préférence "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

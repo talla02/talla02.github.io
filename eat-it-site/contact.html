@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Eat It Keur Massar | Adresse, horaires et réservation</title>
+    <meta name="description" content="Contactez le restaurant Eat It à Keur Massar (Route de Jaxaay, Dakar) : téléphone, WhatsApp, email, horaires et plan d'accès. Ouvert 7j/7 de 10h à minuit (2h du matin le vendredi et samedi).">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Tailwind CSS, AOS (Animations) & FontAwesome (Icônes) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- ================= BARRE DE NAVIGATION ================= -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" aria-label="Accueil Eat It">
+                <img src="logo.png" alt="Logo Eat It" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8 font-bold uppercase text-xs tracking-widest">
+                <a href="index.html" class="nav-link hover:text-gold transition">Accueil</a>
+                <a href="index.html#concept" class="nav-link hover:text-gold transition">Le Concept</a>
+                <a href="menu.html" class="nav-link hover:text-gold transition">Le Menu</a>
+                <a href="contact.html" class="nav-link active hover:text-gold transition">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="menu.html" class="hidden md:inline-block bg-black text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-gold transition">COMMANDER</a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-xl" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu de navigation">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menu mobile déroulant -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 font-bold uppercase text-sm tracking-widest">
+            <a href="index.html" class="block hover:text-gold transition">Accueil</a>
+            <a href="index.html#concept" class="block hover:text-gold transition">Le Concept</a>
+            <a href="menu.html" class="block hover:text-gold transition">Le Menu</a>
+            <a href="contact.html" class="block text-gold">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ================= EN-TÊTE DE PAGE ================= -->
+    <section class="relative pt-36 pb-16 px-6 bg-black text-center">
+        <div class="absolute inset-0 opacity-30 bg-cover bg-center" style="background-image: url('interieur.jpg');"></div>
+        <div class="relative z-10" data-aos="fade-up">
+            <h2 class="text-gold font-bold uppercase tracking-widest text-sm mb-2">Contact</h2>
+            <h1 class="text-4xl md:text-6xl text-white font-black uppercase">Où nous trouver ?</h1>
+        </div>
+    </section>
+
+    <!-- ================= COORDONNÉES ================= -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center" data-aos="fade-up">
+            <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition">
+                <i class="fa-solid fa-location-dot text-3xl text-gold mb-4"></i>
+                <h3 class="font-black uppercase tracking-widest text-sm mb-3">Adresse</h3>
+                <p class="text-gray-600 text-sm selectable">Route de Jaxaay,<br>Keur Massar, Dakar</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Restaurant+Eat+It+Keur+Massar+Route+de+Jaxaay+Dakar" target="_blank" rel="noopener" class="inline-block mt-4 text-gold font-bold uppercase tracking-widest text-xs hover:underline">Itinéraire <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+            <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition">
+                <i class="fa-solid fa-phone text-3xl text-gold mb-4"></i>
+                <h3 class="font-black uppercase tracking-widest text-sm mb-3">Téléphone</h3>
+                <p class="text-gray-600 text-sm selectable">33 840 35 35<br>78 139 63 63</p>
+                <a href="https://wa.me/221771050009" target="_blank" rel="noopener" class="inline-block mt-4 text-gold font-bold uppercase tracking-widest text-xs hover:underline"><i class="fa-brands fa-whatsapp mr-1"></i>WhatsApp</a>
+            </div>
+            <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition">
+                <i class="fa-solid fa-clock text-3xl text-gold mb-4"></i>
+                <h3 class="font-black uppercase tracking-widest text-sm mb-3">Horaires</h3>
+                <p class="text-gray-600 text-sm">Dim — Jeu : 10h — 00h<br>Ven — Sam : 10h — 02h</p>
+                <a href="mailto:eatitsenegal@gmail.com" class="inline-block mt-4 text-gold font-bold uppercase tracking-widest text-xs hover:underline break-all">eatitsenegal@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PLAN D'ACCÈS ================= -->
+    <section class="pb-20 px-6">
+        <div class="max-w-5xl mx-auto" data-aos="fade-up">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <iframe
+                    title="Plan d'accès Eat It Keur Massar"
+                    src="https://maps.google.com/maps?q=Restaurant%20Eat%20It%20Keur%20Massar%20Route%20de%20Jaxaay%20Dakar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    class="w-full h-96 border-0"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BANDEAU RÉSERVATION / ÉVÉNEMENT ================= -->
+    <section class="py-20 px-6 bg-stone-950 text-white text-center">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <span class="text-gold font-bold uppercase tracking-[0.2em] text-xs bg-gold/10 px-4 py-2 rounded-full border border-gold/20">Groupes &amp; Événements</span>
+            <h3 class="text-3xl md:text-4xl font-black uppercase mt-6 mb-4">Un cadre spacieux pour vos événements</h3>
+            <p class="text-gray-400 mb-8">Anniversaires, réunions de famille, afterworks : écrivez-nous sur WhatsApp pour réserver ou commander un gâteau sur mesure.</p>
+            <a href="https://wa.me/221781396363?text=Bonjour%20Eat%20It%2C%20je%20souhaite%20faire%20une%20r%C3%A9servation." target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-gold text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-gold/90 transition shadow-lg shadow-gold/20">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Réserver sur WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= PIED DE PAGE ================= -->
+    <footer class="bg-stone-950 text-white pt-16 pb-8 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <img src="logo.png" alt="Logo Eat It" class="h-12 w-auto mb-4">
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Pizza · Burger · Plats exquis · Pâtisserie · Glacier.<br>Votre restaurant Tasty Food &amp; Chill à Keur Massar.</p>
+                <div class="flex space-x-4 text-xl">
+                    <a href="https://www.instagram.com/eatit_keurmassar/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/p/Restaurant-Eat-it-Keur-Massar-61560243341505/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@eatitkeurmassar" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Horaires</h4>
+                <p class="text-gray-400 text-sm leading-loose">Dim — Jeu : 10h00 — 00h00<br>Ven — Sam : 10h00 — 02h00<br>Sur place · À emporter · Livraison</p>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Contact</h4>
+                <p class="text-gray-400 text-sm leading-loose selectable">
+                    <i class="fa-solid fa-location-dot text-gold mr-2"></i>Route de Jaxaay, Keur Massar, Dakar<br>
+                    <i class="fa-solid fa-phone text-gold mr-2"></i>33 840 35 35 · 78 139 63 63<br>
+                    <i class="fa-solid fa-envelope text-gold mr-2"></i>eatitsenegal@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500 font-bold uppercase tracking-widest">
+            <p>&copy; 2026 Eat It Keur Massar. Tous droits réservés.</p>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-gold transition">Accueil</a>
+                <a href="menu.html" class="hover:text-gold transition">Menu</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Librairies & scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

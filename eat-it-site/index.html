@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat It — Restaurant à Keur Massar | Pizzas, Burgers, Plats & Pâtisserie</title>
+    <meta name="description" content="Eat It, restaurant à Keur Massar (Route de Jaxaay, Dakar) : pizzas, burgers, tacos, grillades, plats sénégalais et pâtisserie sur mesure. Ouvert 7j/7 de 10h à minuit (2h du matin le vendredi et samedi). Commande WhatsApp et livraison.">
+
+    <!-- Partage sur les réseaux sociaux (Open Graph) -->
+    <meta property="og:title" content="Eat It — Tasty Food & Chill | Keur Massar">
+    <meta property="og:description" content="Pizzas, burgers, plats exquis et pâtisserie à Keur Massar. Ouvert 7j/7, 10h - 00h (2h ven. et sam.).">
+    <meta property="og:image" content="facade.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Tailwind CSS, AOS (Animations) & FontAwesome (Icônes) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- ================= BARRE DE NAVIGATION ================= -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" aria-label="Accueil Eat It">
+                <img src="logo.png" alt="Logo Eat It" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8 font-bold uppercase text-xs tracking-widest">
+                <a href="index.html" class="nav-link active hover:text-gold transition">Accueil</a>
+                <a href="index.html#concept" class="nav-link hover:text-gold transition">Le Concept</a>
+                <a href="menu.html" class="nav-link hover:text-gold transition">Le Menu</a>
+                <a href="contact.html" class="nav-link hover:text-gold transition">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="menu.html" class="hidden md:inline-block bg-black text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-gold transition">COMMANDER</a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-xl" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu de navigation">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menu mobile déroulant -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 font-bold uppercase text-sm tracking-widest">
+            <a href="index.html" class="block text-gold">Accueil</a>
+            <a href="index.html#concept" class="block hover:text-gold transition">Le Concept</a>
+            <a href="menu.html" class="block hover:text-gold transition">Le Menu</a>
+            <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+            <a href="menu.html" class="block bg-black text-white text-center px-5 py-3 rounded-full text-xs hover:bg-gold transition">COMMANDER</a>
+        </div>
+    </nav>
+
+    <!-- ================= SECTION D'ACCUEIL (HERO) ================= -->
+    <section class="relative h-screen flex items-center justify-center text-center px-6 bg-black">
+        <div class="absolute inset-0 opacity-50 bg-cover bg-center" style="background-image: url('facade.jpg');"></div>
+        <div class="relative z-10" data-aos="fade-up" data-aos-duration="1500">
+            <img src="logo.png" alt="Logo Eat It" class="mx-auto mb-8 w-32 md:w-40" style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45));">
+            <h2 class="text-gold font-bold tracking-[0.3em] uppercase mb-4 text-sm">Bienvenue chez EAT IT</h2>
+            <h1 class="text-5xl md:text-8xl text-white font-black uppercase leading-none mb-8">Tasty Food<br>& Chill</h1>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="menu.html" class="bg-gold text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg shadow-gold/30">VOIR LE MENU</a>
+                <a href="contact.html" class="border-2 border-white text-white px-12 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition">NOUS TROUVER</a>
+            </div>
+        </div>
+        <!-- Bandeau d'informations pratiques -->
+        <div class="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm text-white py-4 px-6 hidden md:block">
+            <div class="max-w-5xl mx-auto flex justify-between items-center text-xs uppercase font-bold tracking-widest">
+                <span><i class="fa-solid fa-clock text-gold mr-2"></i>Ouvert 7J/7 · Jusqu'à 2h ven. &amp; sam.</span>
+                <span><i class="fa-solid fa-location-dot text-gold mr-2"></i>Route de Jaxaay, Keur Massar</span>
+                <span><i class="fa-solid fa-motorcycle text-gold mr-2"></i>Livraison disponible</span>
+                <span class="selectable"><i class="fa-solid fa-phone text-gold mr-2"></i>78 139 63 63</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LE CONCEPT ================= -->
+    <section id="concept" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl font-black uppercase mb-6 leading-tight">Un cadre moderne pour des <span class="text-gold">moments uniques.</span></h2>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                    Situé à la Route de Jaxaay, Eat It vous accueille dans un espace au design végétalisé et épuré, avec plus de 150 places assises. Que ce soit pour un déjeuner solo, un dîner entre amis ou une commande sur le pouce, nous garantissons fraîcheur et générosité.
+                </p>
+                <div class="grid grid-cols-2 gap-6 text-sm font-bold uppercase tracking-widest text-gray-400 mb-8">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Halal</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> WiFi disponible</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Parking</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-gold"></i> Livraison</div>
+                </div>
+                <a href="contact.html" class="inline-flex items-center gap-3 text-gold font-bold uppercase tracking-widest text-sm hover:gap-5 transition-all">
+                    En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="relative" data-aos="fade-left" data-aos-delay="200">
+                <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="interieur.jpg" alt="Intérieur du restaurant Eat It" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-gold text-white p-8 rounded-2xl hidden md:block">
+                    <p class="text-4xl font-black">100%</p>
+                    <p class="text-xs uppercase font-bold tracking-widest">Qualité Maison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NOS SPÉCIALITÉS (APERÇU DU MENU) ================= -->
+    <section class="py-24 bg-gray-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-gold font-bold uppercase tracking-widest text-sm mb-2">Nos Spécialités</h2>
+                <h3 class="text-4xl font-black uppercase">Un aperçu de la carte</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto" data-aos="fade-up">
+                <a href="menu.html" class="cat-tile block">
+                    <img src="pizza-time.jpg" alt="Pizzas Eat It">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-pizza-slice mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Pizzas</h4>
+                        <p class="text-xs text-gray-300">Dès 3 500 F</p>
+                    </div>
+                </a>
+                <a href="menu.html" class="cat-tile block">
+                    <img src="burger.jpg" alt="Burgers Eat It">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-burger mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Burgers</h4>
+                        <p class="text-xs text-gray-300">Dès 2 000 F</p>
+                    </div>
+                </a>
+                <a href="menu.html" class="cat-tile block">
+                    <img src="grillade.jpg" alt="Grillades et plats Eat It">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-fire mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Grillades</h4>
+                        <p class="text-xs text-gray-300">Dès 3 000 F</p>
+                    </div>
+                </a>
+                <a href="menu.html" class="cat-tile block">
+                    <img src="gateau1.jpg" alt="Pâtisserie Eat It">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-cake-candles mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Pâtisserie</h4>
+                        <p class="text-xs text-gray-300">Sur mesure</p>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="menu.html" class="inline-flex items-center gap-3 bg-gold text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-black transition shadow-lg shadow-gold/20">
+                    Voir toute la carte <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= L'EXPÉRIENCE EAT IT ================= -->
+    <section id="experience" class="py-24 px-6 bg-stone-950 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-2 gap-4 relative" data-aos="fade-right">
+                <div class="space-y-4">
+                    <img src="pizza-time.jpg" class="rounded-3xl h-64 w-full object-cover shadow-lg" alt="Savoir-faire pâtisserie">
+                    <img src="facade.jpg" class="rounded-3xl h-40 w-full object-cover shadow-lg" alt="Gourmandise">
+                </div>
+                <div class="space-y-4 pt-12">
+                    <img src="gateau2.jpg" class="rounded-3xl h-40 w-full object-cover shadow-lg" alt="Création pâtissière">
+                    <img src="interieur.jpg" class="rounded-3xl h-64 w-full object-cover shadow-lg" alt="Service">
+                </div>
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-gold/10 rounded-full blur-2xl"></div>
+            </div>
+            <div data-aos="fade-left" class="space-y-8">
+                <div>
+                    <span class="text-gold font-bold uppercase tracking-[0.2em] text-xs bg-gold/10 px-4 py-2 rounded-full border border-gold/20">L'Art de Recevoir</span>
+                    <h3 class="text-4xl md:text-5xl font-black uppercase mt-6 leading-tight">Une Expérience<br><span class="text-gold">Sensationnelle</span></h3>
+                </div>
+                <p class="text-gray-300 text-lg leading-relaxed font-light">
+                    Bien plus qu'un simple repas, nous créons une parenthèse conviviale et gourmande. De la précision de nos assemblages salés à la délicatesse créative de nos desserts, chaque visite à Keur Massar se transforme en un souvenir d'exception.
+                </p>
+                <div class="space-y-4 border-t border-white/10 pt-8">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gold/10 text-gold p-3 rounded-xl border border-gold/20">
+                            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg uppercase tracking-wide">Fait Maison</h4>
+                            <p class="text-gray-400 text-sm mt-1">Des ingrédients rigoureusement sélectionnés pour des textures et saveurs intenses.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gold/10 text-gold p-3 rounded-xl border border-gold/20">
+                            <i class="fa-solid fa-mug-hot text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg uppercase tracking-wide">Ambiance Unique &amp; Chill</h4>
+                            <p class="text-gray-400 text-sm mt-1">Un espace conçu pour vous détendre, savourer et immortaliser vos instants.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gold/10 text-gold p-3 rounded-xl border border-gold/20">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg uppercase tracking-wide">Commande Simplifiée</h4>
+                            <p class="text-gray-400 text-sm mt-1">Composez votre panier sur le site et envoyez votre commande en un clic sur WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <a href="menu.html" class="inline-flex items-center gap-3 bg-gold text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-gold/90 transition shadow-lg shadow-gold/20">
+                        Explorer le Menu <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BANDEAU D'APPEL À L'ACTION ================= -->
+    <section class="py-20 px-6 bg-gold text-white text-center">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4">Une envie ? Un anniversaire ?</h3>
+            <p class="text-white/80 mb-8">Commandez en ligne ou passez nous voir à Keur Massar — gâteaux personnalisés sur devis.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="menu.html" class="bg-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:scale-105 transition">Commander maintenant</a>
+                <a href="https://wa.me/221781396363" target="_blank" rel="noopener" class="bg-white text-gold px-10 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:scale-105 transition"><i class="fa-brands fa-whatsapp mr-2"></i>Nous écrire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PIED DE PAGE ================= -->
+    <footer class="bg-stone-950 text-white pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <img src="logo.png" alt="Logo Eat It" class="h-12 w-auto mb-4">
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Pizza · Burger · Plats exquis · Pâtisserie · Glacier.<br>Votre restaurant Tasty Food &amp; Chill à Keur Massar.</p>
+                <div class="flex space-x-4 text-xl">
+                    <a href="https://www.instagram.com/eatit_keurmassar/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/p/Restaurant-Eat-it-Keur-Massar-61560243341505/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@eatitkeurmassar" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Horaires</h4>
+                <p class="text-gray-400 text-sm leading-loose">Dim — Jeu : 10h00 — 00h00<br>Ven — Sam : 10h00 — 02h00<br>Sur place · À emporter · Livraison</p>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Contact</h4>
+                <p class="text-gray-400 text-sm leading-loose selectable">
+                    <i class="fa-solid fa-location-dot text-gold mr-2"></i>Route de Jaxaay, Keur Massar, Dakar<br>
+                    <i class="fa-solid fa-phone text-gold mr-2"></i>33 840 35 35 · 78 139 63 63<br>
+                    <i class="fa-solid fa-envelope text-gold mr-2"></i>eatitsenegal@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500 font-bold uppercase tracking-widest">
+            <p>&copy; 2026 Eat It Keur Massar. Tous droits réservés.</p>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-gold transition">Accueil</a>
+                <a href="menu.html" class="hover:text-gold transition">Menu</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Librairies & scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Menu — Eat It Keur Massar | Commande en ligne via WhatsApp</title>
+    <meta name="description" content="Découvrez la carte du restaurant Eat It à Keur Massar : pizzas, burgers, tacos, sandwichs, grillades, plats sénégalais, boissons et pâtisserie. Commandez directement sur WhatsApp.">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Tailwind CSS, AOS (Animations) & FontAwesome (Icônes) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- ================= BARRE DE NAVIGATION ================= -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" aria-label="Accueil Eat It">
+                <img src="logo.png" alt="Logo Eat It" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8 font-bold uppercase text-xs tracking-widest">
+                <a href="index.html" class="nav-link hover:text-gold transition">Accueil</a>
+                <a href="index.html#concept" class="nav-link hover:text-gold transition">Le Concept</a>
+                <a href="menu.html" class="nav-link active hover:text-gold transition">Le Menu</a>
+                <a href="contact.html" class="nav-link hover:text-gold transition">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#menu" class="hidden md:inline-block bg-black text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-gold transition">COMMANDER</a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-xl" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu de navigation">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menu mobile déroulant -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 font-bold uppercase text-sm tracking-widest">
+            <a href="index.html" class="block hover:text-gold transition">Accueil</a>
+            <a href="index.html#concept" class="block hover:text-gold transition">Le Concept</a>
+            <a href="menu.html" class="block text-gold">Le Menu</a>
+            <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ================= EN-TÊTE DE PAGE ================= -->
+    <section class="relative pt-36 pb-16 px-6 bg-black text-center">
+        <div class="absolute inset-0 opacity-30 bg-cover bg-center" style="background-image: url('grillade.jpg');"></div>
+        <div class="relative z-10" data-aos="fade-up">
+            <h2 class="text-gold font-bold uppercase tracking-widest text-sm mb-2">Notre Carte</h2>
+            <h1 class="text-4xl md:text-6xl text-white font-black uppercase">Choisissez votre envie</h1>
+            <p class="text-gray-300 mt-4 max-w-md mx-auto text-sm">Touchez une catégorie pour voir tous les plats, ajoutez au panier et commandez sur WhatsApp.</p>
+        </div>
+    </section>
+
+    <!-- ================= SECTION MENU DE LA CARTE ================= -->
+    <section id="menu" class="py-20 bg-gray-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- GRILLE DE CATEGORIES -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5 max-w-6xl mx-auto mb-16" data-aos="fade-up">
+
+                <div class="cat-tile" onclick="openCategoryModal('pizzas')">
+                    <img src="pizza-time.jpg" alt="Pizzas">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-pizza-slice mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Pizzas</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('salades')">
+                    <img src="salade-time.png" alt="Salades">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-leaf mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Salades</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('burgers')">
+                    <img src="burger.jpg" alt="Burgers">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-burger mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Burgers</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('tacos')">
+                    <img src="tacos.jpg" alt="Tacos">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-pepper-hot mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Tacos</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('sandwichs')">
+                    <img src="sandwich-time.webp" alt="Sandwichs">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-bread-slice mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Sandwichs</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('grillades')">
+                    <img src="grillade.jpg" alt="Grillades et plats">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-fire mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Grillades &amp; Plats</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('poulet')">
+                    <img src="poulet-time.jfif" alt="Poulet">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-drumstick-bite mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Poulet</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('boissons')">
+                    <img src="boisson-time.jfif" alt="Boissons">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-martini-glass-citrus mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Boissons</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('desserts')">
+                    <img src="dessert.jfif" alt="Desserts">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-ice-cream mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Desserts</h4>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="openCategoryModal('patisserie')">
+                    <img src="gateau2.jpg" alt="Pâtisserie">
+                    <div class="cat-tile-overlay"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <i class="fa-solid fa-cake-candles mb-1"></i>
+                        <h4 class="font-black uppercase text-lg leading-tight">Pâtisserie</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+        <p class="text-center text-xs text-gray-400 font-bold uppercase tracking-widest -mt-8 mb-4">
+            <i class="fa-brands fa-whatsapp text-gold mr-1"></i> Paiement sur place ou à la livraison — la commande est envoyée sur WhatsApp
+        </p>
+    </section>
+
+<!-- FENÊTRES POP-UP DES CATÉGORIES -->
+    <div id="menu-modals-root">
+                <!-- PIZZAS -->
+                <div id="modal-pizzas" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('pizzas')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Pizzas</h3>
+                            <button onclick="closeCategoryModal('pizzas')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-6">Prix : Moyenne / Grande</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Margarita</h5><span class="text-gold font-black whitespace-nowrap ml-3">3500F / 5500F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 3500 F</span><button class="cart-btn-minus" onclick="cartChange('margarita-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-margarita-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('margarita-moyenne', 1, 3500, 'Margarita (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 5500 F</span><button class="cart-btn-minus" onclick="cartChange('margarita-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-margarita-grande">0</span><button class="cart-btn-plus" onclick="cartChange('margarita-grande', 1, 5500, 'Margarita (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Reine</h5><span class="text-gold font-black whitespace-nowrap ml-3">4000F / 6000F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, jambon, champignons, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 4000 F</span><button class="cart-btn-minus" onclick="cartChange('reine-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-reine-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('reine-moyenne', 1, 4000, 'Reine (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 6000 F</span><button class="cart-btn-minus" onclick="cartChange('reine-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-reine-grande">0</span><button class="cart-btn-plus" onclick="cartChange('reine-grande', 1, 6000, 'Reine (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Spicy Chicken Piri Piri</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500F / 6500F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, poulet épicé, oignons, poivrons, maïs, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 4500 F</span><button class="cart-btn-minus" onclick="cartChange('spicy-chicken-piri-piri-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-spicy-chicken-piri-piri-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('spicy-chicken-piri-piri-moyenne', 1, 4500, 'Spicy Chicken Piri Piri (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 6500 F</span><button class="cart-btn-minus" onclick="cartChange('spicy-chicken-piri-piri-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-spicy-chicken-piri-piri-grande">0</span><button class="cart-btn-plus" onclick="cartChange('spicy-chicken-piri-piri-grande', 1, 6500, 'Spicy Chicken Piri Piri (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Chicken Barbecue</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500F / 6500F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Sauce barbecue, fromage, poulet, oignons, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 4500 F</span><button class="cart-btn-minus" onclick="cartChange('chicken-barbecue-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-chicken-barbecue-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('chicken-barbecue-moyenne', 1, 4500, 'Chicken Barbecue (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 6500 F</span><button class="cart-btn-minus" onclick="cartChange('chicken-barbecue-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-chicken-barbecue-grande">0</span><button class="cart-btn-plus" onclick="cartChange('chicken-barbecue-grande', 1, 6500, 'Chicken Barbecue (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Orientale</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500F / 6500F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, viande hachée, oignons, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 4500 F</span><button class="cart-btn-minus" onclick="cartChange('orientale-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-orientale-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('orientale-moyenne', 1, 4500, 'Orientale (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 6500 F</span><button class="cart-btn-minus" onclick="cartChange('orientale-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-orientale-grande">0</span><button class="cart-btn-plus" onclick="cartChange('orientale-grande', 1, 6500, 'Orientale (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Mexicaine</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500F / 6500F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, viande hachée épicée, oignons, poivrons, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 4500 F</span><button class="cart-btn-minus" onclick="cartChange('mexicaine-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-mexicaine-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('mexicaine-moyenne', 1, 4500, 'Mexicaine (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 6500 F</span><button class="cart-btn-minus" onclick="cartChange('mexicaine-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-mexicaine-grande">0</span><button class="cart-btn-plus" onclick="cartChange('mexicaine-grande', 1, 6500, 'Mexicaine (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Pizza Mixte Grill</h5><span class="text-gold font-black whitespace-nowrap ml-3">5000F / 7000F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Tomate, fromage, lamelles de bœuf, merguez, oignons, olives</p>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Moyenne · 5000 F</span><button class="cart-btn-minus" onclick="cartChange('pizza-mixte-grill-moyenne', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-pizza-mixte-grill-moyenne">0</span><button class="cart-btn-plus" onclick="cartChange('pizza-mixte-grill-moyenne', 1, 5000, 'Pizza Mixte Grill (Moyenne)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">Grande · 7000 F</span><button class="cart-btn-minus" onclick="cartChange('pizza-mixte-grill-grande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-pizza-mixte-grill-grande">0</span><button class="cart-btn-plus" onclick="cartChange('pizza-mixte-grill-grande', 1, 7000, 'Pizza Mixte Grill (Grande)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SALADES -->
+                <div id="modal-salades" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('salades')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Salades</h3>
+                            <button onclick="closeCategoryModal('salades')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Salade Caesar</h5><span class="text-gold font-black whitespace-nowrap ml-3">3500 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Salade, tomate, poulet, maïs, croûtons, parmesan, sauce caesar</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('salade-caesar', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-salade-caesar">0</span><button class="cart-btn-plus" onclick="cartChange('salade-caesar', 1, 3500, 'Salade Caesar')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BURGERS -->
+                <div id="modal-burgers" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('burgers')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Burgers</h3>
+                            <button onclick="closeCategoryModal('burgers')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-6">*Servis avec 1 portion de frites</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Hamburger*</h5><span class="text-gold font-black whitespace-nowrap ml-3">2500 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Steak, salade, tomate, oignons, sauce biggy</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('hamburger', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-hamburger">0</span><button class="cart-btn-plus" onclick="cartChange('hamburger', 1, 2500, 'Hamburger*')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Cheese Burger*</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Steak, salade, tomate, oignons, cheddar, sauce biggy</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('cheese-burger', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-cheese-burger">0</span><button class="cart-btn-plus" onclick="cartChange('cheese-burger', 1, 3000, 'Cheese Burger*')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Keur Massar Burger</h5><span class="text-gold font-black whitespace-nowrap ml-3">2000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Steak, salade, tomate, oignons, œuf, cheddar, ketchup, mayonnaise, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('keur-massar-burger', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-keur-massar-burger">0</span><button class="cart-btn-plus" onclick="cartChange('keur-massar-burger', 1, 2000, 'Keur Massar Burger')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TACOS -->
+                <div id="modal-tacos" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('tacos')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Tacos</h3>
+                            <button onclick="closeCategoryModal('tacos')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tacos Poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">2500 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Poulet, tomate, oignons, fromage, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tacos-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tacos-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('tacos-poulet', 1, 2500, 'Tacos Poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tacos Steak</h5><span class="text-gold font-black whitespace-nowrap ml-3">2500 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Viande hachée, tomate, oignons, fromage, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tacos-steak', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tacos-steak">0</span><button class="cart-btn-plus" onclick="cartChange('tacos-steak', 1, 2500, 'Tacos Steak')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tacos Mixte</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Viande hachée, poulet, tomate, oignons, fromage, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tacos-mixte', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tacos-mixte">0</span><button class="cart-btn-plus" onclick="cartChange('tacos-mixte', 1, 3000, 'Tacos Mixte')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SANDWICHS -->
+                <div id="modal-sandwichs" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('sandwichs')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Sandwichs</h3>
+                            <button onclick="closeCategoryModal('sandwichs')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Chawarma Viande</h5><span class="text-gold font-black whitespace-nowrap ml-3">2000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Pain arabe, chawarma viande, tomate, oignons, persil, sauce blanche, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('chawarma-viande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-chawarma-viande">0</span><button class="cart-btn-plus" onclick="cartChange('chawarma-viande', 1, 2000, 'Chawarma Viande')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Chawarma Poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">2000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Pain arabe, chawarma poulet, oignons, cornichons, sauce blanche, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('chawarma-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-chawarma-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('chawarma-poulet', 1, 2000, 'Chawarma Poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Brochettes Viande</h5><span class="text-gold font-black whitespace-nowrap ml-3">2000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Pain baguette, bœuf, tomate, oignons, moutarde, mayonnaise, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('brochettes-viande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-brochettes-viande">0</span><button class="cart-btn-plus" onclick="cartChange('brochettes-viande', 1, 2000, 'Brochettes Viande')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Brochettes Poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">2000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Pain baguette, poulet grillé, oignons, cornichons, sauce ail, mayonnaise, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('brochettes-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-brochettes-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('brochettes-poulet', 1, 2000, 'Brochettes Poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Merguez</h5><span class="text-gold font-black whitespace-nowrap ml-3">1500 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Pain baguette, merguez, moutarde, frites</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('merguez', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-merguez">0</span><button class="cart-btn-plus" onclick="cartChange('merguez', 1, 1500, 'Merguez')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRILLADES & PLATS -->
+                <div id="modal-grillades" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('grillades')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Grillades &amp; Plats</h3>
+                            <button onclick="closeCategoryModal('grillades')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Poulet Braisé</h5><span class="text-gold font-black whitespace-nowrap ml-3">1/2 : 4000F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Entier : 8000 F</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('poulet-braise', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-poulet-braise">0</span><button class="cart-btn-plus" onclick="cartChange('poulet-braise', 1, 4000, 'Poulet Braisé')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Brochettes filet bœuf ou poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('brochettes-filet-b-uf-ou-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-brochettes-filet-b-uf-ou-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('brochettes-filet-b-uf-ou-poulet', 1, 6000, 'Brochettes filet bœuf ou poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Filet de bœuf à la plancha</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Sauce champignons ou poivre</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('filet-de-b-uf-a-la-plancha', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-filet-de-b-uf-a-la-plancha">0</span><button class="cart-btn-plus" onclick="cartChange('filet-de-b-uf-a-la-plancha', 1, 6000, 'Filet de bœuf à la plancha')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Brochettes de lotte</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Sauce créole</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('brochettes-de-lotte', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-brochettes-de-lotte">0</span><button class="cart-btn-plus" onclick="cartChange('brochettes-de-lotte', 1, 6000, 'Brochettes de lotte')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Poisson braisé</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Sauce créole</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('poisson-braise', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-poisson-braise">0</span><button class="cart-btn-plus" onclick="cartChange('poisson-braise', 1, 6000, 'Poisson braisé')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tagliatelles au poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">4000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Poulet, crème fraîche, parmesan</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tagliatelles-au-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tagliatelles-au-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('tagliatelles-au-poulet', 1, 4000, 'Tagliatelles au poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Yassa Poulet</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('yassa-poulet', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-yassa-poulet">0</span><button class="cart-btn-plus" onclick="cartChange('yassa-poulet', 1, 3000, 'Yassa Poulet')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Thiébou Dieune</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('thiebou-dieune', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-thiebou-dieune">0</span><button class="cart-btn-plus" onclick="cartChange('thiebou-dieune', 1, 3000, 'Thiébou Dieune')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Plat du jour (thé offert)</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('plat-du-jour-the-offert', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-plat-du-jour-the-offert">0</span><button class="cart-btn-plus" onclick="cartChange('plat-du-jour-the-offert', 1, 3000, 'Plat du jour (thé offert)')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs text-gray-400 font-bold uppercase tracking-widest mt-6">Accompagnement au choix : frites, salade, légumes sautés, pommes sautées, attiéké, riz blanc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POULET -->
+                <div id="modal-poulet" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('poulet')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Morceaux de Poulet</h3>
+                            <button onclick="closeCategoryModal('poulet')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-6">Servis avec 1 portion de frites</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Morceaux de Poulet 3 pièces</h5><span class="text-gold font-black whitespace-nowrap ml-3">3500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('morceaux-de-poulet-3-pieces', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-morceaux-de-poulet-3-pieces">0</span><button class="cart-btn-plus" onclick="cartChange('morceaux-de-poulet-3-pieces', 1, 3500, 'Morceaux de Poulet 3 pièces')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Morceaux de Poulet 4 pièces</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('morceaux-de-poulet-4-pieces', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-morceaux-de-poulet-4-pieces">0</span><button class="cart-btn-plus" onclick="cartChange('morceaux-de-poulet-4-pieces', 1, 4500, 'Morceaux de Poulet 4 pièces')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Morceaux de Poulet 5 pièces</h5><span class="text-gold font-black whitespace-nowrap ml-3">5500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('morceaux-de-poulet-5-pieces', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-morceaux-de-poulet-5-pieces">0</span><button class="cart-btn-plus" onclick="cartChange('morceaux-de-poulet-5-pieces', 1, 5500, 'Morceaux de Poulet 5 pièces')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tenders 4 pièces</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tenders-4-pieces', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tenders-4-pieces">0</span><button class="cart-btn-plus" onclick="cartChange('tenders-4-pieces', 1, 3000, 'Tenders 4 pièces')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Tenders 6 pièces</h5><span class="text-gold font-black whitespace-nowrap ml-3">4500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('tenders-6-pieces', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-tenders-6-pieces">0</span><button class="cart-btn-plus" onclick="cartChange('tenders-6-pieces', 1, 4500, 'Tenders 6 pièces')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Fataya Viande</h5><span class="text-gold font-black whitespace-nowrap ml-3">1000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('fataya-viande', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-fataya-viande">0</span><button class="cart-btn-plus" onclick="cartChange('fataya-viande', 1, 1000, 'Fataya Viande')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOISSONS -->
+                <div id="modal-boissons" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('boissons')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Boissons</h3>
+                            <button onclick="closeCategoryModal('boissons')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Café</h5><span class="text-gold font-black whitespace-nowrap ml-3">1000 F</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Expresso, allongé</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('cafe', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-cafe">0</span><button class="cart-btn-plus" onclick="cartChange('cafe', 1, 1000, 'Café')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Eau</h5><span class="text-gold font-black whitespace-nowrap ml-3">PM 500F / GM 1000F</span></div>
+                                        <div class="cart-controls cart-controls-variant"><span class="cart-variant-label">PM · 500 F</span><button class="cart-btn-minus" onclick="cartChange('eau-pm', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-eau-pm">0</span><button class="cart-btn-plus" onclick="cartChange('eau-pm', 1, 500, 'Eau (PM)')" aria-label="Ajouter">+</button></div><div class="cart-controls cart-controls-variant"><span class="cart-variant-label">GM · 1000 F</span><button class="cart-btn-minus" onclick="cartChange('eau-gm', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-eau-gm">0</span><button class="cart-btn-plus" onclick="cartChange('eau-gm', 1, 1000, 'Eau (GM)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Soft / Jus en canette</h5><span class="text-gold font-black whitespace-nowrap ml-3">1000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('soft-jus-en-canette', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-soft-jus-en-canette">0</span><button class="cart-btn-plus" onclick="cartChange('soft-jus-en-canette', 1, 1000, 'Soft / Jus en canette')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Jus Locaux</h5><span class="text-gold font-black whitespace-nowrap ml-3">1000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('jus-locaux', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-jus-locaux">0</span><button class="cart-btn-plus" onclick="cartChange('jus-locaux', 1, 1000, 'Jus Locaux')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Milkshake</h5><span class="text-gold font-black whitespace-nowrap ml-3">3000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('milkshake', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-milkshake">0</span><button class="cart-btn-plus" onclick="cartChange('milkshake', 1, 3000, 'Milkshake')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Virgin Mojito</h5><span class="text-gold font-black whitespace-nowrap ml-3">3500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('virgin-mojito', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-virgin-mojito">0</span><button class="cart-btn-plus" onclick="cartChange('virgin-mojito', 1, 3500, 'Virgin Mojito')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Chicha</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('chicha', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-chicha">0</span><button class="cart-btn-plus" onclick="cartChange('chicha', 1, 6000, 'Chicha')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div id="modal-desserts" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('desserts')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Nos Desserts</h3>
+                            <button onclick="closeCategoryModal('desserts')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Fondant Chocolat + Glace Vanille</h5><span class="text-gold font-black whitespace-nowrap ml-3">2500 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('fondant-chocolat-glace-vanille', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-fondant-chocolat-glace-vanille">0</span><button class="cart-btn-plus" onclick="cartChange('fondant-chocolat-glace-vanille', 1, 2500, 'Fondant Chocolat + Glace Vanille')" aria-label="Ajouter">+ Ajouter</button></div>
+                                    </div>
+                                </div>
+                                <p class="text-center text-sm text-gray-400 mt-6">Envie d'un gâteau d'anniversaire ? Découvrez notre <a class="text-gold font-bold underline" href="#menu">pâtisserie sur mesure</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PÂTISSERIE (SUR-MESURE & GÂTEAUX) -->
+                <div id="modal-patisserie" class="menu-modal">
+                    <div class="menu-modal-backdrop" onclick="closeCategoryModal('patisserie')"></div>
+                    <div class="menu-modal-panel">
+                        <div class="menu-modal-header">
+                            <h3>Pâtisserie &amp; Gâteaux</h3>
+                            <button onclick="closeCategoryModal('patisserie')" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="menu-modal-body">
+                            <div class="p-6 md:p-8">
+                                <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-6">Nos créations personnalisées et gourmandes</p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100 md:col-span-2">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Gâteau Anniversaire Personnel (Sur-mesure)</h5><span class="text-gold font-black whitespace-nowrap ml-3">Sur devis (Dès 15000 F)</span></div>
+                                        <p class="text-gray-500 text-sm mt-1">Créations artisanales, visuels incroyables et goût exquis personnalisable.</p>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('gateau-anniversaire-personnalise', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-gateau-anniversaire-personnalise">0</span><button class="cart-btn-plus" onclick="cartChange('gateau-anniversaire-personnalise', 1, 15000, 'Gâteau Anniversaire (Sur devis)')" aria-label="Ajouter">+ Ajouter au Panier</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Mignardises (Les 12 pièces)</h5><span class="text-gold font-black whitespace-nowrap ml-3">6000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('mignardises-12pcs', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-mignardises-12pcs">0</span><button class="cart-btn-plus" onclick="cartChange('mignardises-12pcs', 1, 6000, 'Mignardises (12 pièces)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                                        <div class="flex justify-between items-baseline"><h5 class="font-bold uppercase">Cupcakes Décorés (Les 6 pièces)</h5><span class="text-gold font-black whitespace-nowrap ml-3">5000 F</span></div>
+                                        <div class="cart-controls"><button class="cart-btn-minus" onclick="cartChange('cupcakes-6pcs', -1)" aria-label="Retirer">−</button><span class="cart-qty" id="qty-cupcakes-6pcs">0</span><button class="cart-btn-plus" onclick="cartChange('cupcakes-6pcs', 1, 5000, 'Cupcakes (6 pièces)')" aria-label="Ajouter">+</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+
+    <!-- BOUTON PANIER FLOTTANT -->
+    <button id="cart-fab" onclick="openCartDrawer()" aria-label="Voir le panier">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span id="cart-fab-count" class="hidden">0</span>
+    </button>
+
+    <!-- TIROIR PANIER -->
+    <div id="cart-drawer">
+        <div id="cart-drawer-backdrop" onclick="closeCartDrawer()"></div>
+        <div id="cart-drawer-panel">
+            <div id="cart-drawer-header">
+                <h3>Votre Panier</h3>
+                <button onclick="closeCartDrawer()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="cart-drawer-body">
+                <div class="cart-drawer-empty">Votre panier est vide.<br>Ajoutez des plats depuis le menu !</div>
+            </div>
+            <div id="cart-drawer-footer">
+                <div id="cart-total-row">
+                    <span>Total</span>
+                    <span id="cart-total-amount">0 F</span>
+                </div>
+                <button id="cart-order-btn" onclick="openDeliveryModal()" disabled>
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Commander sur WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FENÊTRE LIVRAISON / À EMPORTER -->
+    <div id="delivery-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center px-6">
+        <div id="delivery-modal-backdrop" class="absolute inset-0 bg-black/70" onclick="closeDeliveryModal()"></div>
+        <div class="relative bg-white rounded-3xl w-full max-w-sm p-8 text-center shadow-2xl" data-aos="fade-up">
+            <button onclick="closeDeliveryModal()" aria-label="Fermer" class="absolute top-4 right-4 text-gray-400 hover:text-black text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Étape 1 : choix du mode -->
+            <div id="delivery-modal-step-choice">
+                <h3 class="font-black uppercase tracking-widest text-lg mb-2">Votre commande</h3>
+                <p class="text-gray-500 text-sm mb-6">Comment souhaitez-vous la récupérer ?</p>
+                <div class="grid grid-cols-1 gap-4">
+                    <button onclick="chooseDeliveryMode('delivery')" class="flex items-center justify-center gap-3 bg-black text-white py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-gold transition">
+                        <i class="fa-solid fa-motorcycle text-lg"></i> Livraison
+                    </button>
+                    <button onclick="chooseDeliveryMode('pickup')" class="flex items-center justify-center gap-3 border-2 border-black text-black py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-black hover:text-white transition">
+                        <i class="fa-solid fa-store text-lg"></i> À emporter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Étape 2 : adresse (si livraison) -->
+            <div id="delivery-modal-step-address" class="hidden">
+                <h3 class="font-black uppercase tracking-widest text-lg mb-2">Adresse de livraison</h3>
+                <p class="text-gray-500 text-sm mb-4">Partagez votre position pour une livraison précise</p>
+
+                <button id="delivery-geo-btn" onclick="shareLocation()" class="w-full flex items-center justify-center gap-2 border-2 border-gold text-gold py-3 rounded-full font-bold uppercase tracking-wider text-xs mb-3 hover:bg-gold hover:text-white transition">
+                    <i class="fa-solid fa-location-crosshairs"></i> Partager ma position GPS
+                </button>
+                <p id="delivery-geo-status" class="text-xs mb-4 hidden"></p>
+
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="flex-1 h-px bg-gray-200"></div>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest">et / ou</span>
+                    <div class="flex-1 h-px bg-gray-200"></div>
+                </div>
+
+                <input id="delivery-address-input" type="text" placeholder="Quartier, repère, étage..." class="w-full border border-gray-200 rounded-full px-5 py-3 text-sm mb-4 text-center focus:outline-none focus:border-gold">
+                <button onclick="confirmDeliveryOrder()" class="w-full flex items-center justify-center gap-3 bg-gold text-white py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-gold/90 transition shadow-lg shadow-gold/20">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Envoyer sur WhatsApp
+                </button>
+                <button onclick="backToChoice()" class="w-full text-gray-400 text-xs font-bold uppercase tracking-widest mt-4 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Retour
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- ================= PIED DE PAGE ================= -->
+    <footer class="bg-stone-950 text-white pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <img src="logo.png" alt="Logo Eat It" class="h-12 w-auto mb-4">
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Pizza · Burger · Plats exquis · Pâtisserie · Glacier.<br>Votre restaurant Tasty Food &amp; Chill à Keur Massar.</p>
+                <div class="flex space-x-4 text-xl">
+                    <a href="https://www.instagram.com/eatit_keurmassar/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/p/Restaurant-Eat-it-Keur-Massar-61560243341505/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@eatitkeurmassar" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Horaires</h4>
+                <p class="text-gray-400 text-sm leading-loose">Dim — Jeu : 10h00 — 00h00<br>Ven — Sam : 10h00 — 02h00<br>Sur place · À emporter · Livraison</p>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-widest text-sm mb-4 text-gold">Contact</h4>
+                <p class="text-gray-400 text-sm leading-loose selectable">
+                    <i class="fa-solid fa-location-dot text-gold mr-2"></i>Route de Jaxaay, Keur Massar, Dakar<br>
+                    <i class="fa-solid fa-phone text-gold mr-2"></i>33 840 35 35 · 78 139 63 63<br>
+                    <i class="fa-solid fa-envelope text-gold mr-2"></i>eatitsenegal@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500 font-bold uppercase tracking-widest">
+            <p>&copy; 2026 Eat It Keur Massar. Tous droits réservés.</p>
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-gold transition">Accueil</a>
+                <a href="menu.html" class="hover:text-gold transition">Menu</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Librairies & scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
